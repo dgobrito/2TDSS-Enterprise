@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Fiap.HelloWorld.UI.Model
 {
-    class Veiculo
+    abstract class Veiculo
     {
+        //Construtor
+        public Veiculo(string modelo)
+        {
+            _modelo = modelo;
+        }
+
         //Field (Atributo)
         private string _modelo;
 
@@ -16,6 +22,18 @@ namespace Fiap.HelloWorld.UI.Model
         {
             get { return _modelo; }
             set { _modelo = value; }
+        }
+
+        //Propriedades
+        public Cambio Cambio { get; set; }
+
+        //Métodos
+        public abstract void Frear();
+
+        //virtual -> permite a sobrescrita do método
+        public virtual void Acelerar()
+        {
+            Console.WriteLine("Veiculo acelerando");
         }
     }
 }

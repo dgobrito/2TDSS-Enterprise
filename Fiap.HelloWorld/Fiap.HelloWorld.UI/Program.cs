@@ -12,7 +12,27 @@ namespace Fiap.HelloWorld.UI
         static void Main(string[] args)
         {
             //Instanciar um carro
-            Carro carro = new Carro();
+            var carro = new Carro("Fusca");
+
+            //Instanciar um onibus
+            var onibus = new Onibus("Caio")
+            {
+                //Modelo = "Caio",
+                Linha = "Barra Funda"
+            };
+
+            //Criar uma lista de avião
+            var lista = new List<Aviao>();
+            lista.Add(new Aviao("A380"));
+            lista.Add(new Aviao("14 Bis"));
+            lista.Add(new Aviao("F18"));
+
+            //Exibir os modelos dos aviões
+            foreach (var item in lista)
+            {
+                Console.WriteLine(item.Modelo);
+            }
+
             //Setar um modelo e placa
             carro.Modelo = "Fusca";
             carro.Placa = "EDS-9000";

@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace Fiap.HelloWorld.UI.Model
 {
-    class Carro : Veiculo
+    class Aviao : Veiculo, IAereo
     {
-        public Carro(string modelo) : base(modelo)
+        public Aviao(string modelo) : base(modelo)
         {
         }
-
-        public string Placa { get; set; }
 
         public override void Frear()
         {
-            Console.WriteLine("ABS ativado");
+            Console.WriteLine("Acionar os flaps");
         }
 
+        public void Voar()
+        {
+            Console.WriteLine("Ligar as turbinas");
+        }
     }
 }
