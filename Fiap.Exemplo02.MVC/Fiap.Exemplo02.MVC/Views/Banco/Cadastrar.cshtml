@@ -1,0 +1,14 @@
+﻿@model Fiap.Exemplo02.MVC.Models.Banco
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(b => b.Agencia)
+        @Html.TextBoxFor(b => b.Agencia)
+    </div>
+}
