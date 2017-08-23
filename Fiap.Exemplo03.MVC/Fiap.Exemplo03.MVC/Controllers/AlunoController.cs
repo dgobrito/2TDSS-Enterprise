@@ -12,6 +12,12 @@ namespace Fiap.Exemplo03.MVC.Controllers
         //Simular o banco de dados
         private static List<Aluno> _banco = new List<Aluno>();
 
+        [HttpGet]
+        public ActionResult Listar()
+        {
+            return View(_banco);
+        }
+
         [HttpPost]
         public ActionResult Cadastrar(Aluno aluno)
         {
