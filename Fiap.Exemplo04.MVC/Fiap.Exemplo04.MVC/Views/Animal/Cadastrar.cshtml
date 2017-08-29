@@ -1,0 +1,34 @@
+﻿@model Fiap.Exemplo04.MVC.Models.Animal
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar</h2>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Nome)
+        @Html.TextBoxFor(c => c.Nome, new { @class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.DataEntrada)
+        @Html.TextBoxFor(c => c.DataEntrada, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Especie)
+        @Html.TextBoxFor(c => c.Especie, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(c => c.Carnivoro)
+        @Html.LabelFor(c => c.Carnivoro)
+    </div>
+    <input type="submit" value="Salvar" class="btn btn-primary" />
+}
