@@ -15,11 +15,13 @@ namespace Fiap.Exemplo04.MVC.Models
         public string Nome { get; set; }
 
         [Required]
+        [Display(Name = "Espécie")]
         public string Especie { get; set; }
 
         public bool Carnivoro { get; set; }
 
         [Required]
+        [Display(Name = "Data de Entrada")]
         public DateTime DataEntrada { get; set; }
     }
 }

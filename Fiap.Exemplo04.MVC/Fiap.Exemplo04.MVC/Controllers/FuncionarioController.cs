@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Fiap.Exemplo04.MVC.Controllers
 {
-    public class AnimalController : Controller
+    public class FuncionarioController : Controller
     {
         private ZooContext _context = new ZooContext();
 
@@ -19,19 +19,18 @@ namespace Fiap.Exemplo04.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cadastrar(Animal animal)
+        public ActionResult Cadastrar(Funcionario funcionario)
         {
-            _context.Animais.Add(animal);
+            _context.Funcionarios.Add(funcionario);
             _context.SaveChanges();
             TempData["msg"] = "Cadastrado!";
-            //Para não cadastrar varias vezes
-            return RedirectToAction("Cadastrar");
+            return Redirect("Cadastrar");
         }
 
         [HttpGet]
         public ActionResult Listar()
         {
-            return View(_context.Animais.ToList());
+            return View(_context.Funcionarios.ToList());
         }
     }
 }

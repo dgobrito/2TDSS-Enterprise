@@ -10,5 +10,6 @@ namespace Fiap.Exemplo04.MVC.Persistencia
     public class ZooContext : DbContext
     {
         public DbSet<Animal> Animais { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
     }
 }
