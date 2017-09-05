@@ -167,6 +167,7 @@
     <Content Include="Views\Animal\Listar.cshtml" />
     <Content Include="Views\Funcionario\Cadastrar.cshtml" />
     <Content Include="Views\Funcionario\Listar.cshtml" />
+    <Content Include="Views\Animal\Alterar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
