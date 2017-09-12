@@ -8,38 +8,32 @@ using System.Web.Mvc;
 
 namespace Fiap.Exemplo05.MVC.Controllers
 {
-    public class TimeController : Controller
+    public class JogadorController : Controller
     {
         private TimeContext _context = new TimeContext();
 
         [HttpGet]
-        public ActionResult Buscar(string nome)
-        {
-            var lista = _context.Times.Include("Tecnico")
-                .Where(t => t.Nome.Contains(nome)).ToList();
-            //Informa o nome da tela e a lista de times
-            return View("Listar",lista);
-        }
-
-        [HttpGet]
         public ActionResult Listar()
         {
-            //Buscar todos os times cadastrados com o tecnico
-            var lista = _context.Times.Include("Tecnico").ToList();
+            var lista = _context.Jogadores.Include("Time").ToList();
             return View(lista);
         }
 
         [HttpGet]
         public ActionResult Cadastrar()
         {
+            //Buscar todos os times
+            var lista = _context.Times.ToList();
+            ViewBag.times = new SelectList(lista, "TimeId", "Nome");
             return View();
         }
+
         [HttpPost]
-        public ActionResult Cadastrar(Time time)
+        public ActionResult Cadastrar(Jogador jogador)
         {
-            _context.Times.Add(time);
+            _context.Jogadores.Add(jogador);
             _context.SaveChanges();
-            TempData["msg"] = "Cadastrado!";
+            TempData["msg"] = "Jogador Cadastrado";
             return RedirectToAction("Cadastrar");
         }
     }

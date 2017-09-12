@@ -1,0 +1,32 @@
+﻿@model List<Fiap.Exemplo05.MVC.Models.Time>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Times</h2>
+
+@using (Html.BeginForm("Buscar","Time",FormMethod.Get))
+{
+    <div class="form-inline">
+        @Html.TextBox("Nome", null, 
+            new { @class = "form-control" , placeholder = "Digite o nome"})
+        <input type="submit" value="Pesquisar" class="btn btn-primary" />
+    </div>
+}
+<br />
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Mundial</th>
+        <th>Tecnico</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@(item.Mundial?"Sim":"Não")</td>
+            <td>@item.Tecnico.Nome</td>
+        </tr>
+    }
+</table>
+
