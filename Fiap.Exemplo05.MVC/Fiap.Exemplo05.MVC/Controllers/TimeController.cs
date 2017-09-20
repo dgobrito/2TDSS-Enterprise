@@ -1,5 +1,6 @@
 ﻿using Fiap.Exemplo05.MVC.Models;
 using Fiap.Exemplo05.MVC.Persistencia;
+using Fiap.Exemplo05.MVC.Units;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,13 @@ namespace Fiap.Exemplo05.MVC.Controllers
 {
     public class TimeController : Controller
     {
-        private TimeContext _context = new TimeContext();
+        private UnitOfWork _unit = new UnitOfWork();
 
         [HttpGet]
         public ActionResult Buscar(string nome)
         {
-            var lista = _context.Times.Include("Tecnico")
-                .Where(t => t.Nome.Contains(nome)).ToList();
+            var lista = _unit.TimeRepository
+                    .BuscarPor(t => t.Nome.Contains(nome));
             //Informa o nome da tela e a lista de times
             return View("Listar",lista);
         }
@@ -25,7 +26,7 @@ namespace Fiap.Exemplo05.MVC.Controllers
         public ActionResult Listar()
         {
             //Buscar todos os times cadastrados com o tecnico
-            var lista = _context.Times.Include("Tecnico").ToList();
+            var lista = _unit.TimeRepository.Listar();
             return View(lista);
         }
 
@@ -37,10 +38,17 @@ namespace Fiap.Exemplo05.MVC.Controllers
         [HttpPost]
         public ActionResult Cadastrar(Time time)
         {
-            _context.Times.Add(time);
-            _context.SaveChanges();
+            _unit.TimeRepository.Cadastrar(time);
+            _unit.Save();
             TempData["msg"] = "Cadastrado!";
             return RedirectToAction("Cadastrar");
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            _unit.Dispose();
+            base.Dispose(disposing);
+        }
+
     }
 }
