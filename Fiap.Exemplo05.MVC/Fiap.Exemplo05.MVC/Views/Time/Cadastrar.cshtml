@@ -13,13 +13,15 @@
 <h2>Cadastrar</h2>
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary();
     <div class="form-group">
         @Html.LabelFor(t => t.Nome)
         @Html.TextBoxFor(t => t.Nome, new { @class = "form-control"})
+        @Html.ValidationMessageFor(t => t.Nome)
     </div>
     <div class="form-group">
         @Html.CheckBoxFor(t => t.Mundial)
-        @Html.LabelFor(t => t.Mundial)
+        @Html.LabelFor(t => t.Mundial)        
     </div>
 <fieldset>
     <legend>Técnico</legend>
