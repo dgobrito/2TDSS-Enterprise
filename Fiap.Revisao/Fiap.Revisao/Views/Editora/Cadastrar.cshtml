@@ -1,0 +1,23 @@
+﻿@model Fiap.Revisao.Models.Editora
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar</h2>
+@if (TempData["msg"] != null) {
+    <div class="alert alert-success">@TempData["msg"]</div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(e => e.Nome)
+        @Html.TextBoxFor(e => e.Nome, new { @class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(e => e.Local)
+        @Html.TextBoxFor(e => e.Local, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+}
